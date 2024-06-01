@@ -3,9 +3,9 @@
 </h1>
 <div class="row">
     <div class="col-6">
-        <a [routerLink]="['/jobs']" routerLinkActive="router-link-active"  id="joblistingbtn" (click)="btnclick($event)" class="jobbtn  btn btn-light d-block text-center">JOBS</a>
+        <a [routerLink]="['/jobs']" routerLinkActive="router-link-active"  id="joblistingbtn" (click)="btnclick($event)" class="jobbtn  btn btn-light d-block text-center" [ngClass]="{'active': jobactive}">JOBS</a>
     </div>
     <div class="col-6">
-        <a [routerLink]="['/favorites']" routerLinkActive="router-link-active"  id="jobfavlistingbtn" (click)="btnclick($event)" class="jobbtn btn btn-light d-block text-center">FAVORITES</a>
+        <a [routerLink]="['/favorites']" routerLinkActive="router-link-active"  id="jobfavlistingbtn" (click)="btnclick($event)" class="jobbtn btn btn-light d-block text-center" [ngClass]="{'active': favactive}">FAVORITES</a>
     </div>
 </div>

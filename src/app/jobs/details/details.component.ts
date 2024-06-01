@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../services/jobs.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Jobs } from '../jobs';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
