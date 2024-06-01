@@ -1,0 +1,24 @@
+<div class="job_details mt-2 py-2">
+    <a routerLink="/jobs" class="btn btn-light my-2">Back</a>
+    <div class="row">
+        <div class="col-2">
+            <img src="{{jobsdata.companyLogo}}" class="img-fluid">
+        </div>
+        <div class="col-8">
+            <h3>{{jobsdata.title}}</h3>
+            <div>
+                <span class="badge text-bg-secondary">{{jobsdata.industries}}</span>
+                <span class="badge text-bg-secondary m-3">{{jobsdata.types}}</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p><strong>Publish Date: </strong> {{jobsdata.publishDate}}</p>
+        <p><strong>Location: </strong>{{jobsdata.location}}</p>
+        <p><strong>Reference: </strong>{{jobsdata.reference}}</p>
+        <p><strong>Description: </strong></p>
+        <div [innerHTML]="jobsdata.description"></div>
+    </div>
+</div>
+
+
