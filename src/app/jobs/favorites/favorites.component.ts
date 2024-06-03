@@ -17,7 +17,11 @@ export class FavoritesComponent implements OnInit {
   constructor(private commentService: JobsService) { }
   ngOnInit(): void {
     this.commentService.getJobsData().subscribe((jobsdata) => {
-      let fav = [98596,98595];
+      let fav = null;
+      fav = localStorage.getItem("favorite-job-offers-ids");
+      if (fav != null) {
+        fav = JSON.parse(fav)
+      }
       for (let i = 0; i < jobsdata.length; i++) {
         if (fav.includes(jobsdata[i]['id'])) {
           this.jobsdata.push(jobsdata[i]);

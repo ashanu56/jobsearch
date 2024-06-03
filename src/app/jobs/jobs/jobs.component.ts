@@ -18,6 +18,10 @@ export class JobsComponent implements OnInit {
   favorites: number[] = [];
   fav: number[] = [];
   constructor(private commentService: JobsService) {
+    let favlist = localStorage.getItem("favorite-job-offers-ids");
+    if (favlist != null) {
+      this.fav = JSON.parse(favlist);
+    }
   }
   ngOnInit(): void {
     this.commentService.getJobsData().subscribe((jobsdata) => {
@@ -35,10 +39,21 @@ export class JobsComponent implements OnInit {
   toggleFav(event: any) {
     let id = event.target.id
     id = parseInt(id);
-    this.favorites.push(id);
-      // this.sendData(this.favorites)
-  }
-  sendData(favorites:object) {
-    this.parentFunction.emit(favorites)
+    let favlist = localStorage.getItem("favorite-job-offers-ids");
+    if (favlist != null) {
+      this.favorites = favlist = JSON.parse(favlist);
+      if (favlist?.includes(id)) {
+        const index = favlist.indexOf(id);
+        if (index > -1) {
+          this.favorites.splice(index, 1);
+        }
+      } else {
+        this.favorites.push(id);
+      }
+    }else{
+      this.favorites.push(id);
+    }
+    localStorage.setItem("favorite-job-offers-ids", JSON.stringify(this.favorites))
+    document.getElementById(id.toString())?.classList.toggle('active');
   }
 }
